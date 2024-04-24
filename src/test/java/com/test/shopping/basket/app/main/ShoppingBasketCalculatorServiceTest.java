@@ -47,6 +47,22 @@ public class ShoppingBasketCalculatorServiceTest {
 		 assertEquals(0.30, basket.calculateFinalBill(),0);
 		 
 	 }
+	
+	@Test
+	public void testAddingMaxItemsInBasket() {
+		
+		ShoppingBasketServiceImpl basket = new ShoppingBasketServiceImpl();
+		Item apple = new Item("apple", ShoppingBasketStrategySelector.getStrategy("apple"));
+		//assertThrows(IllegalStateException.class, ()->ShoppingBasketCalculatorService.printShoppingBasketBill());
+		try {
+		for(int i=0; i<=101; i++) {
+			basket.addItem(apple);
+		}
+		} catch(IllegalStateException e) {
+			assertEquals("Maximum limit exceeded.", e.getMessage());
+		}
+
+	}
 
 
 }

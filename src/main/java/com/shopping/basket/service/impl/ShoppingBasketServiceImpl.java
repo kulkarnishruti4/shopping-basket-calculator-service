@@ -31,12 +31,14 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 	 * Adds item to the Basket List
 	 * @param item
 	 */
+	@Override
 	public void addItem(Item item) {
 		
 		  if (itemsList.size() < MAX_ITEMS_IN_BASKET) {
 	            itemsList.add(item);
 	        } else {
 	            logger.info("Maximum limit reached for Number of Items in Basket!");
+	            throw new IllegalStateException("Maximum limit exceeded.");
 	        }
 	}
 	
@@ -44,33 +46,40 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 	 * Calculates price of all items in the final list.
 	 * @return final price 
 	 */
+	@Override
 	public double calculateFinalBill () {
-		logger.info("Calculating final Bill. Inside calculateFinalBill() @ShoppingBasketImpl");
+		
 	    // Calculate final quantity for each unique item
 	    Map<String, Integer> finalQuantityMap = calculateFinalQuantity();
 	    // Calculate total price based on final quantity and pricing strategy
 	    double totalPrice = 0;
 	    Set<String> processedItems = new HashSet<>(); // To track already processed items
-	    
-	    for (Item item : itemsList) {
-	    	
-	        String itemName = item.getName();
-	        
-	        if (!processedItems.contains(itemName)) {
-	        	
-	            int finalQuantity = finalQuantityMap.getOrDefault(itemName, 0);
-	            double itemPrice = item.calculatePrice(finalQuantity);
-	            totalPrice += itemPrice;
-	            processedItems.add(itemName); // Mark the item as processed
-	        }
-	    }
-	    return totalPrice;
+	    try {
+		    for (Item item : itemsList) {
+		    	
+		        String itemName = item.getName();
+		        
+		        if (!processedItems.contains(itemName)) {
+		        	
+		            int finalQuantity = finalQuantityMap.getOrDefault(itemName, 0);
+		            double itemPrice = item.calculatePrice(finalQuantity);
+		            totalPrice += itemPrice;
+		            processedItems.add(itemName); // Mark the item as processed
+		        }
+		    } 
+	    }catch (Exception e) {
+		    	logger.info("Exception Occurred in calculateFinalBill @ShoppingBasketServiceImpl "+ e.getMessage());
+		    }
+		    
+		    return totalPrice;
+		    
 	}
 	
 	/**
-	 * Calculates final quantity of each item inputted by the user.
+	 * Calculates final quantity of each item inputed by the user.
 	 * @return
 	 */
+	@Override
 	public Map<String, Integer> calculateFinalQuantity() {
         Map<String, Integer> finalQuantityMap = new HashMap<>();
         

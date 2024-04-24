@@ -14,6 +14,8 @@ public class FixedPriceStartegyTest {
 		 FixedPriceStrategy strategy = new FixedPriceStrategy(0.35);
 		 
 	     assertEquals(0.35, strategy.calculatePrice(1), 0);
+	     
+	     assertEquals(3.5, strategy.calculatePrice(10), 0);
 	        
 	    }
 	 

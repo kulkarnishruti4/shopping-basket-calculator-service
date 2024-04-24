@@ -20,6 +20,10 @@ public class ShoppingBasketCalculatorService {
 	private static final Logger logger = Logger.getLogger(ShoppingBasketCalculatorService.class.getName());
 	
 	public static void main(String[] args) {
+			printShoppingBasketBill();
+	}
+	
+	public static void printShoppingBasketBill() {
 		
 		ShoppingBasketServiceImpl shoppingBasket = new ShoppingBasketServiceImpl();
 		try (Scanner scanner = new Scanner(System.in)) {
@@ -39,10 +43,10 @@ public class ShoppingBasketCalculatorService {
 				shoppingBasket.addItem(item);
 			}
 		}
-		double finalPriceOfBasket = shoppingBasket.calculateFinalBill();
-		logger.info("Final price calculated successfully : £"+ finalPriceOfBasket);
-		System.out.println("Final Price of Basket is: £" + finalPriceOfBasket);
-
+		double finalPriceOfBasketInPounds = shoppingBasket.calculateFinalBill();
+		logger.info("Final price calculated successfully : £"+ finalPriceOfBasketInPounds);
+		System.out.println("Final Price of Basket is: £" + finalPriceOfBasketInPounds);
+		
 	}
 
 }

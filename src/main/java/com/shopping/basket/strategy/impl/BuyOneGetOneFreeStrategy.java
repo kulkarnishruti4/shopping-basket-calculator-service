@@ -19,7 +19,7 @@ public class BuyOneGetOneFreeStrategy implements ShoppingBasketPricingStrategy{
 		/*quantity / 2 - number of pairs of items.
 		quantity % 2 - the remainder which represents any remaining single item. */
 		
-		int paidQuantity = quantity/2 + quantity %2;
+		int paidQuantity = (quantity/2) + (quantity%2);
 		return paidQuantity*price;
 	}
 }

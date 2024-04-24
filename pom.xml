@@ -4,7 +4,7 @@
   <artifactId>shopping-basket-calculator-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Shopping Basket Calculator Service</name>
-  <description> This service scans the basket list and prints the total amount.</description>
+  <description> This service scans the basket list and prints the total bill.</description>
   
   <dependencies>
 	

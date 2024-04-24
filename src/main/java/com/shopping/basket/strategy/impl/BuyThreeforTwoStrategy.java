@@ -19,7 +19,7 @@ public class BuyThreeForTwoStrategy implements ShoppingBasketPricingStrategy{
 		/*(quantity / 3) * 2 -the number of sets of three items and multiplies by 2 to get the number of items the customer needs to pay for.
 		quantity % 3 - calculates the remainder, which represents any remaining single items. */
 		
-		int paidQuantity = (quantity / 3) * 2 + quantity % 3;
+		int paidQuantity = ((quantity / 3) * 2 )+ (quantity % 3);
 		return paidQuantity*price;
 		
 	}

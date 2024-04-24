@@ -25,7 +25,7 @@ public class ShoppingBasketStrategySelector {
 		case Constants.LIME:
 			return new BuyThreeForTwoStrategy(ItemEnum.LIME.getPrice());
 		default:
-			throw new IllegalArgumentException("Above Item is not listed: "+ itemName);
+			throw new IllegalArgumentException("Above Item "+"'"+itemName+"'"+" is not available.");
 		}
 		
 		

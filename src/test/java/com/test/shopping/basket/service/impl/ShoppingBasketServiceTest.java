@@ -1,6 +1,11 @@
 package com.test.shopping.basket.service.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -9,6 +14,17 @@ import com.shopping.basket.util.ShoppingBasketStrategySelector;
 import com.shopping.basket.vo.Item;
 
 public class ShoppingBasketServiceTest {
+	
+	@Test
+	public void testAdditem() {
+		
+		Item apple = new Item("apple", ShoppingBasketStrategySelector.getStrategy("apple"));
+		ShoppingBasketServiceImpl service = new ShoppingBasketServiceImpl();
+		
+		service.addItem(apple);
+		
+		assertEquals(0.35, service.calculateFinalBill(),0);
+	}
 	
 	@Test
 	 public void testCalculateTotalPrice() {
@@ -23,9 +39,20 @@ public class ShoppingBasketServiceTest {
 		 basket.addItem(banana);
 		 basket.addItem(melon);
 		 basket.addItem(lime);
-		 System.out.println(basket.calculateFinalBill());
+		 
 		 assertEquals(1.20, basket.calculateFinalBill(),0);
 		 
 	 }
+	
+	@Test
+	public void testCalculateFinalQuantity() {
+		  
+		ShoppingBasketServiceImpl basket = new ShoppingBasketServiceImpl();
+		 Map<String, Integer> finalQuantityMap = new HashMap<>();
+		 
+		assertEquals(finalQuantityMap, basket.calculateFinalQuantity());
+		  
+		
+	}
 
 }
