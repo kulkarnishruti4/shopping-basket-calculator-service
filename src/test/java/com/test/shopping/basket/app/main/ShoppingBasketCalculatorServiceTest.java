@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.shopping.basket.service.impl.ShoppingBasketImpl;
-import com.shopping.basket.util.StrategySelector;
+import com.shopping.basket.service.impl.ShoppingBasketServiceImpl;
+import com.shopping.basket.util.ShoppingBasketStrategySelector;
 import com.shopping.basket.vo.Item;
 
 public class ShoppingBasketCalculatorServiceTest {
@@ -13,38 +13,38 @@ public class ShoppingBasketCalculatorServiceTest {
 	@Test
 	 public void testCalculateTotalPrice() {
 		 
-		 ShoppingBasketImpl basket = new ShoppingBasketImpl();
+		 ShoppingBasketServiceImpl basket = new ShoppingBasketServiceImpl();
 		 
-		 Item apple = new Item("apple", StrategySelector.getStrategy("apple"));
-		 Item banana = new Item("banana", StrategySelector.getStrategy("banana"));
+		 Item apple = new Item("apple", ShoppingBasketStrategySelector.getStrategy("apple"));
+		 Item banana = new Item("banana", ShoppingBasketStrategySelector.getStrategy("banana"));
 		 basket.addItem(apple);
 		 basket.addItem(banana);
-		 assertEquals(basket.calculateFinalBill(),0.55,0);
+		 assertEquals(0.55, basket.calculateFinalBill(),0);
 		 
 	 }
 	
 	@Test
 	 public void testCalculateTotalPriceBuyOneGetOne() {
 		 
-		 ShoppingBasketImpl basket = new ShoppingBasketImpl();
+		 ShoppingBasketServiceImpl basket = new ShoppingBasketServiceImpl();
 		 
-		 Item melon = new Item("melon", StrategySelector.getStrategy("melon"));
+		 Item melon = new Item("melon", ShoppingBasketStrategySelector.getStrategy("melon"));
 		 basket.addItem(melon);
 		 basket.addItem(melon);
-		 assertEquals(basket.calculateFinalBill(), 0.50,0);
+		 assertEquals(0.50, basket.calculateFinalBill(), 0);
 		 
 	 }
 	
 	@Test
 	 public void testCalculateTotalPriceBuyTwoForOne() {
 		 
-		 ShoppingBasketImpl basket = new ShoppingBasketImpl();
+		 ShoppingBasketServiceImpl basket = new ShoppingBasketServiceImpl();
 		 
-		 Item lime = new Item("lime", StrategySelector.getStrategy("lime"));
+		 Item lime = new Item("lime", ShoppingBasketStrategySelector.getStrategy("lime"));
 		 basket.addItem(lime);
 		 basket.addItem(lime);
 		 basket.addItem(lime);
-		 assertEquals(basket.calculateFinalBill(), 0.30,0);
+		 assertEquals(0.30, basket.calculateFinalBill(),0);
 		 
 	 }
 

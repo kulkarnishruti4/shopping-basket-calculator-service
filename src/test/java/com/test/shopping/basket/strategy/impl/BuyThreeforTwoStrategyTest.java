@@ -4,14 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.shopping.basket.strategy.impl.BuyThreeforTwoStrategy;
+import com.shopping.basket.strategy.impl.BuyThreeForTwoStrategy;
 
-public class BuyThreeforTwoStrategyTest {
+public class BuyThreeForTwoStrategyTest {
 	
 	@Test
     public void testCalculatePrice() {
 		
-        BuyThreeforTwoStrategy strategy = new BuyThreeforTwoStrategy(0.15);
+        BuyThreeForTwoStrategy strategy = new BuyThreeForTwoStrategy(0.15);
         
         assertEquals(0, strategy.calculatePrice(0), 0);
         

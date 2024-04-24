@@ -1,11 +1,11 @@
 package com.shopping.basket.strategy.impl;
 
-import com.shopping.basket.strategy.PricingStrategy;
+import com.shopping.basket.strategy.ShoppingBasketPricingStrategy;
 
 /**
  * This Strategy is implemented when there is an offer on an item - Buy one get one free
  */
-public class BuyOneGetOneFreeStrategy implements PricingStrategy{
+public class BuyOneGetOneFreeStrategy implements ShoppingBasketPricingStrategy{
 
 	private double price;
 	

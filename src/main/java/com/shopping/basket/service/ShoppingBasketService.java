@@ -7,7 +7,7 @@ import com.shopping.basket.vo.Item;
 /**
  * This interface provides 2 methods required by shopping basket
  */
-public interface ShoppingBasket {
+public interface ShoppingBasketService {
 	
 	
 	public void addItem(Item item);

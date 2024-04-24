@@ -1,6 +1,6 @@
 package com.shopping.basket.vo;
 
-import com.shopping.basket.strategy.PricingStrategy;
+import com.shopping.basket.strategy.ShoppingBasketPricingStrategy;
 
 /**
  * Vo class for Item
@@ -9,9 +9,9 @@ public class Item {
 	
 	private String name;
 	
-	private PricingStrategy pricingStrategy;
+	private ShoppingBasketPricingStrategy pricingStrategy;
 	
-	public Item(String name, PricingStrategy pricingStrategy) {
+	public Item(String name, ShoppingBasketPricingStrategy pricingStrategy) {
 		this.name = name;
 		this.pricingStrategy = pricingStrategy;
 	}

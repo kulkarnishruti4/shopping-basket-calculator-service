@@ -4,16 +4,15 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import com.shopping.basket.app.main.ShoppingBasketCalculatorService;
 import com.shopping.basket.util.Constants;
 
 /**
  * This configuration class fetches properties from application.properties file
  * 
  */
-public class PricingConfig {
+public class ShoppingBasketConfig {
 	
-	private static final Logger logger = Logger.getLogger(PricingConfig.class.getName());
+	private static final Logger logger = Logger.getLogger(ShoppingBasketConfig.class.getName());
     private static final String CONFIG_FILE = Constants.APPLICATION_PROP_PATH;
     private static int maxItemsInBasket;
     
@@ -23,7 +22,7 @@ public class PricingConfig {
 	
 	public static void loadConfig() {
 		
-		try (InputStream inputStream = PricingConfig.class.getResourceAsStream(CONFIG_FILE)) {
+		try (InputStream inputStream = ShoppingBasketConfig.class.getResourceAsStream(CONFIG_FILE)) {
 			
             Properties properties = new Properties();
             properties.load(inputStream);

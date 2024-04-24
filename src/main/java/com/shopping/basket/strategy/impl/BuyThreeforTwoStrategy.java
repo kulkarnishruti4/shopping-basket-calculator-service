@@ -1,15 +1,15 @@
 package com.shopping.basket.strategy.impl;
 
-import com.shopping.basket.strategy.PricingStrategy;
+import com.shopping.basket.strategy.ShoppingBasketPricingStrategy;
 
 /**
  * This Strategy is implemented when there is an offer on an item - Buy three for the price of two
  */
-public class BuyThreeforTwoStrategy implements PricingStrategy{
+public class BuyThreeForTwoStrategy implements ShoppingBasketPricingStrategy{
 	
 	public double price;
 	
-	public BuyThreeforTwoStrategy(double price) {
+	public BuyThreeForTwoStrategy(double price) {
 		this.price = price;
 	}
 	

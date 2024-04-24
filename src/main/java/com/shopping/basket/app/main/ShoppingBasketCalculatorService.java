@@ -3,14 +3,14 @@ package com.shopping.basket.app.main;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import com.shopping.basket.service.impl.ShoppingBasketImpl;
-import com.shopping.basket.strategy.PricingStrategy;
-import com.shopping.basket.util.StrategySelector;
+import com.shopping.basket.service.impl.ShoppingBasketServiceImpl;
+import com.shopping.basket.strategy.ShoppingBasketPricingStrategy;
+import com.shopping.basket.util.ItemEnum;
+import com.shopping.basket.util.ShoppingBasketStrategySelector;
 import com.shopping.basket.vo.Item;
 
 /**
  * @author ShrutiKulkarni
- * 
  * This is the main class of Shopping Basket Bill Calculator service. 
  * It will take dynamic input of items and display the total price of all items added in the basket.
  * 
@@ -21,21 +21,20 @@ public class ShoppingBasketCalculatorService {
 	
 	public static void main(String[] args) {
 		
-		ShoppingBasketImpl shoppingBasket = new ShoppingBasketImpl();
+		ShoppingBasketServiceImpl shoppingBasket = new ShoppingBasketServiceImpl();
 		try (Scanner scanner = new Scanner(System.in)) {
 			
-			System.out.println("Please enter the name of items to be added in the Basket. Enter 'over' when finished.");
-			
-			//We have taken singular version of items since requirement says items are presented one at a time. Quantity=1 by default.
-			System.out.println("Your options are : Apple, Banana, Melon and Lime.");
+			System.out.println("Please input the name of items to be added in the Basket and press 'Enter'. Press 'Enter' again to finish adding items.");
+			//We have taken singular nouns of items since items are presented one at a time. Quantity=1 by default.
+			System.out.println("Your options are :" + ItemEnum.getItemNames());
 			
 			while(true) {
 				
 				String itemName = scanner.nextLine();
-				if(itemName.equalsIgnoreCase("over"))
+				if(itemName.equals(""))
 					break;
 				
-				PricingStrategy pricingStrategy = StrategySelector.getStrategy(itemName.toLowerCase());
+				ShoppingBasketPricingStrategy pricingStrategy = ShoppingBasketStrategySelector.getStrategy(itemName.toLowerCase());
 				Item item = new Item(itemName, pricingStrategy);
 				shoppingBasket.addItem(item);
 			}

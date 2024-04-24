@@ -8,22 +8,22 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import com.shopping.basket.config.PricingConfig;
-import com.shopping.basket.service.ShoppingBasket;
+import com.shopping.basket.config.ShoppingBasketConfig;
+import com.shopping.basket.service.ShoppingBasketService;
 import com.shopping.basket.vo.Item;
 
 /**
- * This class implements ShoppingBasket. It provides few basic functions for Basket - 
+ * This class implements ShoppingBasketService. It provides few basic functions for Basket - 
  * Add items to a List and Calculate final price of this List.
  */
-public class ShoppingBasketImpl implements ShoppingBasket {
+public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
-	private static final Logger logger = Logger.getLogger(ShoppingBasketImpl.class.getName());
-	private static final int MAX_ITEMS_IN_BASKET = PricingConfig.getMaxItemsInBasket();
+	private static final Logger logger = Logger.getLogger(ShoppingBasketServiceImpl.class.getName());
+	private static final int MAX_ITEMS_IN_BASKET = ShoppingBasketConfig.getMaxItemsInBasket();
 
 	private final List<Item> itemsList;
 	
-	public ShoppingBasketImpl() {	        
+	public ShoppingBasketServiceImpl() {	        
 		itemsList = new ArrayList<>();
     }
 	

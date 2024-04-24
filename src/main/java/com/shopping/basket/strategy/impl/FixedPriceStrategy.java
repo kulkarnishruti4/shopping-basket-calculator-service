@@ -1,11 +1,11 @@
 package com.shopping.basket.strategy.impl;
 
-import com.shopping.basket.strategy.PricingStrategy;
+import com.shopping.basket.strategy.ShoppingBasketPricingStrategy;
 
 /**
  * This Strategy is implemented by default for calculating price of an item
  */
-public class FixedPriceStrategy implements PricingStrategy{
+public class FixedPriceStrategy implements ShoppingBasketPricingStrategy{
 	
 	private double price;
 	
